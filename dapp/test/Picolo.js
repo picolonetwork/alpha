@@ -9,7 +9,9 @@ contract("Picolo", accounts => {
 
 	it('registers database node', async function() {
 		const instance = await Picolo.deployed();
-		const receipt = await instance.registerNode({from: accounts[2]});
-		assert(receipt !== 'undefined');
+		const receipt = await instance.registerNode({from: accounts[1], value: 4});
+		assert(receipt.logs[0].event, 'registeredEvent', 'correct event for registration');
+		const stake = await instance.registeredNodesStake(accounts[1]);
+		assert(stake, 4, 'stake stored correctly');
 	})
 });
