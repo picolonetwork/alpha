@@ -72,7 +72,7 @@ contract Picolo is Ownable, priced {
 
    	
    	// Todo: refactor into subcontract
-   	uint public entryStake = 4 ether;
+   	uint public entryStake = 4 ether;  // amount for testing
    	mapping(address => uint) public registeredNodesStake;
 
    	function registerNode() public payable costs(entryStake) {
@@ -85,4 +85,5 @@ contract Picolo is Ownable, priced {
 }
 
 contract PicoloNodes is Picolo {
+	
 }
