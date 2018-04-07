@@ -77,15 +77,18 @@ contract Picolo is Ownable, priced {
     }
 
    	
+
    	// Todo: refactor into subcontract
    	uint public entryStake = 4;  // amount for testing
    	mapping(address => uint) public registeredNodesStake;
 
-   	event registeredEvent (
-   		address _sender
-   	);
+    // Status of transaction. Used for error handling.
+    event Status(string indexed statusCode);
+
+   	event registeredEvent (address indexed sender);
 
    	function registerNode() public payable costs(entryStake) {
+   		require(!registeredNodesStake[msg.sender]);
    		registeredNodesStake[msg.sender] = entryStake;	
    		registeredEvent(msg.sender);
    	}
@@ -94,7 +97,9 @@ contract Picolo is Ownable, priced {
         entryStake = _price;
     }
 
+    // Challenges 
 
+    // TCR for masternodes
 }
 
 contract PicoloNodes is Picolo {
