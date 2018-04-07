@@ -1,6 +1,17 @@
 pragma solidity ^0.4.2;
 
-contract Picolo {
+import "./ownable.sol";
+
+contract priced {
+    // Modifiers can receive arguments:
+    modifier costs(uint price) {
+        if (msg.value >= price) {
+            _;
+        }
+    }
+}
+
+contract Picolo is Ownable, priced {
     string  public name = "Picolo Token";
     string  public symbol = "PCT";
     string  public standard = "Picolo Token v1.0";
@@ -32,7 +43,7 @@ contract Picolo {
         balanceOf[msg.sender] -= _value;
         balanceOf[_to] += _value;
 
-        Transfer(msg.sender, _to, _value);
+        Transfer(msg.sender, _to, _value);	
 
         return true;
     }
@@ -58,4 +69,20 @@ contract Picolo {
 
         return true;
     }
+
+   	
+   	// Todo: refactor into subcontract
+   	uint public entryStake = 4 ether;
+   	mapping(address => uint) public registeredNodesStake;
+
+   	function registerNode() public payable costs(entryStake) {
+   		registeredNodesStake[msg.sender] = entryStake;	
+   	}
+
+   	function changeEntryStake(uint _price) public onlyOwner {
+        entryStake = _price;
+    }
+}
+
+contract PicoloNodes is Picolo {
 }
