@@ -1,0 +1,18 @@
+body {
+  padding-top: 40px;
+}
+
+.panel-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.btn-lg {
+  min-width: 200px
+}
+
+.welcome {
+  font-size: 18px;
+  display: inline;
+  padding: 5px;
+}
