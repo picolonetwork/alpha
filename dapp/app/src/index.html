@@ -20,6 +20,7 @@
 
      <!-- Application -->
      <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/voterUI.css">
 
 </head>
 
@@ -40,8 +41,22 @@
              </div>
              <div id="Voters" class="tab-pane fade">
                <h3>Voters</h3>
-               <p>Some content.</p>
-             </div>
+                 <div id="vueapp">
+                     <div class="wrapper">
+                         <div>
+                             <div class="card" v-for="node in cooperative">
+                                 {{node}} <br>
+                                 <button class="btn btn-danger" @click="asMalicious(node)">vote malicious</button>
+                             </div>
+                         </div>
+                         <div>
+                             <div class="card" v-for="node in malicious">
+                                 {{node}}
+                                 <button class="btn btn-primary" @click="asCooperative(node)">vote cooperative</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>             </div>
            </div>
      </div>
 
@@ -53,6 +68,28 @@
           </nav>
      </div>
 
+
+
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+     <script>
+       new Vue({
+         el: '#vueapp',
+         data: {
+           cooperative: ['a', 'b', 'c'],
+           malicious: [],
+         },
+         methods: {
+           asMalicious(id){
+             this.cooperative.splice(this.cooperative.indexOf(id), 1);
+             this.malicious.push(id);
+           },
+           asCooperative(id){
+             this.malicious.splice(this.malicious.indexOf(id), 1);
+             this.cooperative.push(id);
+           }
+         }
+       })
+     </script>
 
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
