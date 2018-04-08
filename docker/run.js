@@ -33,9 +33,9 @@ http.createServer(function(req, res) {
   if (url === '/register') {
     register(req, res);
   } else if (url === '/start') {
-    startDb(req, res);
+    start(req, res);
   } else if (url === '/stop') {
-    stopDb(req, res);
+    stop(req, res);
   } else if (url === '/unregister') {
     unregister(req, res);
   } else {
@@ -46,7 +46,7 @@ http.createServer(function(req, res) {
 
 function register(req, res) {
   picoloContract.deployed().then(function(instance) {
-    instance.constNumber.call().then(function(balance) {
+    instance.registerNode().then(function(balance) {
       let number = balance.toNumber();
       res.write('Request received: ' + req.url + ' Number is: ' + number); //write a response to the client
       res.end();
@@ -60,14 +60,14 @@ function register(req, res) {
   });
 }
 
-function startDb(req, res) {
+function start(req, res) {
   let db = spawn('./cockroach', ['start', '--insecure', '--background']);
   followStd(db);
   res.write('Request received: ' + req.url); //write a response to the client
   res.end();
 }
 
-function stopDb(req, res) {
+function stop(req, res) {
   let db = spawn('./cockroach', ['quit', '--insecure']);
   followStd(db);
   res.write('Request received: ' + req.url); //write a response to the client
