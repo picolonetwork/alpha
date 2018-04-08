@@ -120,19 +120,24 @@
                  <div id="vueapp">
                      <div class="wrapper">
                          <div>
-                             <div class="card" v-for="node in cooperative">
-                                 {{node}} <br>
-                                 <button class="btn btn-danger" @click="asMalicious(node)">vote malicious</button>
-                             </div>
+                             <transition-group name="list" tag="p">
+                                 <div class="card list-item" v-for="node in cooperative" :key="node">
+                                     {{node}} <br>
+                                     <button class="btn btn-danger" @click="asMalicious(node)">vote malicious</button>
+                                 </div>
+                             </transition-group>
                          </div>
                          <div>
-                             <div class="card" v-for="node in malicious">
-                                 {{node}} <br>
-                                 <button class="btn btn-primary" @click="asCooperative(node)">vote cooperative</button>
-                             </div>
+                             <transition-group name="list" tag="p">
+                                 <div class="card list-item" v-for="node in malicious" :key="node">
+                                     {{node}} <br>
+                                     <button class="btn btn-primary" @click="asCooperative(node)">vote cooperative</button>
+                                 </div>
+                             </transition-group>
                          </div>
                      </div>
-                 </div>             </div>
+                 </div>
+             </div>
            </div>
      </div>
 
