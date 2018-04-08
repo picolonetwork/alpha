@@ -4,7 +4,7 @@ var Web3 = require('web3');
 var provider = new Web3.providers.HttpProvider(enoderpc);
 var web3 = new Web3(provider);
 // Step 1: Get a contract into my application
-var json = require('./build/contracts/Example.json');
+var json = require('./abi/Example.json');
 
 // Step 2: Turn that contract into an abstraction I can use
 var contract = require('truffle-contract');

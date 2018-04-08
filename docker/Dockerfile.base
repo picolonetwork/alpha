@@ -1,0 +1,10 @@
+FROM debian:8.9
+
+# Install root CAs so we can make SSL connections to phone home and
+# do backups to GCE/AWS/Azure.
+RUN apt-get update && \
+	apt-get -y upgrade && \
+	apt-get install -y ca-certificates curl sudo git vim build-essential
+
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash
+RUN	sudo apt-get install -y nodejs

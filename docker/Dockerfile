@@ -1,19 +1,18 @@
-FROM debian:8.9
+FROM picolo-base
 
-# Install root CAs so we can make SSL connections to phone home and
-# do backups to GCE/AWS/Azure.
-RUN apt-get update && \
-	apt-get -y upgrade && \
-	apt-get install -y ca-certificates  && \
-	rm -rf /var/lib/apt/lists/*
+# use changes to package.json to force Docker not to use the cache
+# when we change our application's nodejs dependencies:
+COPY package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN mkdir -p /picolo && cp -a /tmp/node_modules /picolo
 
-RUN mkdir -p /cockroach
-COPY cockroach.sh cockroach /cockroach/
-# Set working directory so that relative paths
-# are resolved appropriately when passed as args.
-WORKDIR /cockroach/
+# From here we load our application's code in, therefore the previous docker
+# "layer" thats been cached will be used if possible
+WORKDIR /picolo/
+COPY package.json picolo.sh cockroach run.js /picolo/
+COPY abi /picolo/abi
 
 ENV COCKROACH_CHANNEL=official-docker
+ENV enoderpc=http://10.10.0.1:8545
 
-EXPOSE 26257 8080
-ENTRYPOINT ["/cockroach/cockroach.sh"]
+ENTRYPOINT ["/picolo/picolo.sh"]

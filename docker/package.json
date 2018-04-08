@@ -1,0 +1,16 @@
+{
+  "name": "picolo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "dependencies": {
+    "truffle-contract": "^3.0.4",
+    "web3": "^1.0.0-beta.33"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

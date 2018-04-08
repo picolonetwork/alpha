@@ -5,4 +5,5 @@ lotiontest
 cockroach-data/*
 node*/
 docker/cockroach
-truffle/build
+build
+abi
