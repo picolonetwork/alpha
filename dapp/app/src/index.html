@@ -64,10 +64,10 @@
                       Select Actions
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" data-toggle="modal" data-target="#sellArticle" href="#">Register Node</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#sellArticle" href="#">Start</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#sellArticle" href="#">Stop</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#sellArticle" href="#">UnRegister Node</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#Register" href="#">Register Node</a>
+                      <a class="dropdown-item" href="#">Start</a>
+                      <a class="dropdown-item" href="#">Stop</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#Unregister" href="#">UnRegister Node</a>
                     </div>
                   </div>
 
@@ -90,15 +90,15 @@
                   </div>
                 </div>
 
-                <!-- Modal form to sell an article -->
-                <div class="modal fade" id="sellArticle" role="dialog">
+                <!-- Modal form to  Register-->
+                <div class="modal fade" id="Register" role="dialog">
                   <div class="modal-dialog">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Sell your article</h4>
+                        <h4 class="modal-title">Please fill the following:</h4>
                       </div>
                       <div class="modal-body">
 
@@ -106,16 +106,16 @@
                           <div class="col-lg-12">
                             <form>
                               <div class="form-group">
-                                <label for="article_name">Article name</label>
-                                <input type="text" class="form-control" id="article_name" placeholder="Enter the name of your article">
+                                <label for="article_name">Miner Name</label>
+                                <input type="text" class="form-control" id="article_name" placeholder="Enter the name">
                               </div>
                               <div class="form-group">
-                                <label for="price">Price in ETH</label>
-                                <input type="number" class="form-control" id="article_price" placeholder="1" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
+                                <label for="price">Price to Register</label>
+                                <input type="number" class="form-control" id="article_price" placeholder="10" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
                               </div>
                               <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea type="text" class="form-control vresize" id="article_description" placeholder="Describe your article" maxlength="255"></textarea>
+                                <textarea type="text" class="form-control vresize" id="article_description" placeholder="What's the purpose?" maxlength="255"></textarea>
                               </div>
                             </form>
                           </div>
@@ -129,6 +129,46 @@
 
                   </div>
                 </div>
+                <!-- Modal form to  UnRegister-->
+                <div class="modal fade" id="Unregister" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Please fill the following:</h4>
+                      </div>
+                      <div class="modal-body">
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <form>
+                              <!-- <div class="form-group">
+                                <label for="article_name">Miner Name</label>
+                                <input type="text" class="form-control" id="article_name" placeholder="Enter the name">
+                              </div> -->
+                              <div class="form-group">
+                                <label for="price">Price to UnRegister</label>
+                                <input type="number" class="form-control" id="article_price" placeholder="10" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
+                              </div>
+                              <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea type="text" class="form-control vresize" id="article_description" placeholder="What's the purpose?" maxlength="255"></textarea>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.sellArticle(); return false;">Submit</button>
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
              </div>
              <div id="Voters" class="tab-pane fade">
                  <div id="vueapp">
