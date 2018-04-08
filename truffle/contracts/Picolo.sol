@@ -3,9 +3,7 @@ pragma solidity ^0.4.2;
 import "./ownable.sol";
 import "./SafeMath.sol";
 
-
-
-contract priced {
+contract Priced {
     // Modifiers can receive arguments:
     modifier costs(uint price) {
         require(msg.value == price);
@@ -13,7 +11,7 @@ contract priced {
     }
 }
 
-contract Picolo is Ownable, priced {
+contract Picolo is Ownable, Priced {
 
   	using SafeMath for uint256;
 
@@ -38,26 +36,26 @@ contract Picolo is Ownable, priced {
 
    	function registerNode() public {
    	   	require(keccak256(nodeStatus[msg.sender]) == keccak256(""));
-   	   	nodeStatus[msg.sender] = 'registered';	
+   	   	nodeStatus[msg.sender] = 'registered';
    	   	nodeStatusChangeEvent('registered', msg.sender);
    	}
 
    	function sendDeposit() public payable costs(entryStake) {
    		require(keccak256(nodeStatus[msg.sender]) == keccak256("registered"));
-   		registeredNodesStake[msg.sender] = entryStake;	
+   		registeredNodesStake[msg.sender] = entryStake;
    		nodeStatus[msg.sender] = 'valid';
    	   	nodeStatusChangeEvent('valid', msg.sender);
   	}
 
    	function startMining() public {
    		require(keccak256(nodeStatus[msg.sender]) == keccak256("valid"));
-   	   	nodeStatus[msg.sender] = 'active';	
+   	   	nodeStatus[msg.sender] = 'active';
    	   	nodeStatusChangeEvent('active', msg.sender);
    	}
 
    	function stopMining() public {
    		require(keccak256(nodeStatus[msg.sender]) == keccak256("active"));
-   	   	nodeStatus[msg.sender] = 'inactive';	
+   	   	nodeStatus[msg.sender] = 'inactive';
    	   	nodeStatusChangeEvent('inactive', msg.sender);
    	}
 
@@ -65,7 +63,7 @@ contract Picolo is Ownable, priced {
    		require(keccak256(nodeStatus[msg.sender]) != keccak256("malicious"));
    		require(keccak256(nodeStatus[msg.sender]) == keccak256("pending"));
    		msg.sender.transfer(registeredNodesStake[msg.sender]);
-   	   	nodeStatus[msg.sender] = 'registered';	
+   	   	nodeStatus[msg.sender] = 'registered';
    	   	nodeStatusChangeEvent('registered', msg.sender);
    	}
 
@@ -73,10 +71,10 @@ contract Picolo is Ownable, priced {
         entryStake = _price;
     }
 
-    // Challenges 
+    // Challenges
     function addPotentialMalicious(address _target) public onlyOwner {
     	require(keccak256(nodeStatus[msg.sender]) == keccak256("malicious"));
-   	   	nodeStatus[msg.sender] = 'pending';	
+   	   	nodeStatus[msg.sender] = 'pending';
     }
 
     // Consensus
@@ -86,9 +84,9 @@ contract Picolo is Ownable, priced {
     	if (_convict) {
     		maliciousVoteTally[_target].add(1);
     	}
-    	if (voteTally[_target] >= convictThreshold 
+    	if (voteTally[_target] >= convictThreshold
     		&& maliciousVoteTally[_target].mul(2) > voteTally[_target]) {
-    		nodeStatus[_target] = 'malicious';	
+    		nodeStatus[_target] = 'malicious';
    	   		nodeStatusChangeEvent('malicious', msg.sender);
     	}
     }
@@ -125,7 +123,7 @@ contract Picolo is Ownable, priced {
         balanceOf[msg.sender] -= _value;
         balanceOf[_to] += _value;
 
-        Transfer(msg.sender, _to, _value);	
+        Transfer(msg.sender, _to, _value);
 
         return true;
     }
