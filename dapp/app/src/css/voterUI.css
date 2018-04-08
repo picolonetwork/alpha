@@ -1,4 +1,5 @@
 .wrapper {
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
@@ -6,7 +7,22 @@
 
 
 .card {
-    padding: 30px;
-    margin: 30px;
-    border: 2px black solid;
+    padding: 20px;
+    margin: 10px;
+    background-color: #eee;
+}
+
+
+.list-item {
+    transition: all 1s;
+    /* display: inline-block; */
+    margin-right: 10px;
+}
+.list-enter, .list-leave-to
+    /* .list-complete-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.list-leave-active {
+    /* position: absolute; */
 }
