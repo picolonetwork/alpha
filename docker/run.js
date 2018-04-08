@@ -46,9 +46,8 @@ http.createServer(function(req, res) {
 
 function register(req, res) {
   picoloContract.deployed().then(function(instance) {
-    instance.registerNode().then(function(balance) {
-      let number = balance.toNumber();
-      res.write('Request received: ' + req.url + ' Number is: ' + number); //write a response to the client
+    instance.register().then(function(status) {
+      res.write('Request received: ' + req.url); //write a response to the client
       res.end();
     }).catch(function(e) {
       res.write(e); //write a response to the client
