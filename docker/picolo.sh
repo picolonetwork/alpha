@@ -12,6 +12,6 @@
 echo enode rpc is $enoderpc
 node run.js $enoderpc
 
-./cockroach start --insecure
+#./cockroach start --insecure
 
 tail -f /dev/null
