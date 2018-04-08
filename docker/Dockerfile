@@ -9,7 +9,7 @@ RUN mkdir -p /picolo && cp -a /tmp/node_modules /picolo
 # From here we load our application's code in, therefore the previous docker
 # "layer" thats been cached will be used if possible
 WORKDIR /picolo/
-COPY package.json picolo.sh cockroach run.js /picolo/
+COPY cockroach package.json picolo.sh run.js /picolo/
 COPY abi /picolo/abi
 
 ENV COCKROACH_CHANNEL=official-docker
