@@ -28,21 +28,38 @@ if (typeof picoloContract.currentProvider.sendAsync !== "function") {
 }
 
 // Step 4: Start server and use the contract!
-http.createServer(function(req, res) {
-  let url = req.url;
-  if (url === '/register') {
-    register(req, res);
-  } else if (url === '/start') {
-    start(req, res);
-  } else if (url === '/stop') {
-    stop(req, res);
-  } else if (url === '/unregister') {
-    unregister(req, res);
-  } else {
-    res.write('invalid request');
-    res.end();
-  }
-}).listen(9090);
+const express = require('express');
+const app = express();
+
+app.use(express.static('app'));
+
+app.get('/', function(req, res) {
+  res.sendFile("./app/index.html");
+})
+
+app.post('/register', function(req, res) {
+  register(req, res);
+})
+
+app.post('/start', function(req, res) {
+  start(req, res);
+})
+
+app.post('/stop', function(req, res) {
+  stop(req, res);
+})
+
+app.post('/unregister', function(req, res) {
+  unregister(req, res);
+})
+
+const server = app.listen(9090, function() {
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log("Example app listening at http://%s:%s", host, port)
+
+})
 
 function register(req, res) {
   picoloContract.deployed().then(function(instance) {
