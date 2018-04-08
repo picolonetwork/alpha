@@ -30,7 +30,7 @@ App = {
         $('#account').text(account);
         web3.eth.getBalance(account, function(err, balance) {
           if(err === null) {
-            $('#accountBalance').text(web3.fromWei(balance, "ether") + " ETH");
+            $('#accountBalance').text(web3.fromWei(balance, "ether") + " TOKENS");
           }
         })
       }
