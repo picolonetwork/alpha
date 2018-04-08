@@ -2,6 +2,10 @@ body {
   padding-top: 40px;
 }
 
+.jumbotron {
+  padding: 2rem;
+}
+
 .panel-title {
   display: flex;
   flex-wrap: wrap;
