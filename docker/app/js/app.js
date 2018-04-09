@@ -48,41 +48,388 @@ App = {
       // retrieve the article from the contract
       //return App.reloadArticles();
     });
-  },
+    var abiArray = [{
+        constant: true,
+        inputs: [],
+        name: 'totalPayments',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'name',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'approve',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'totalSupply',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object],
+          [Object],
+          [Object]
+        ],
+        name: 'transferFrom',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'decimals',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'registeredNodesStake',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'maliciousVoteTally',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'version',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'nodeStatus',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'entryStake',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'balanceOf',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'owner',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'symbol',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'convictThreshold',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'transfer',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'voteTally',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'allowance',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object]
+        ],
+        name: 'transferOwnership',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: true,
+        inputs: [
+          [Object]
+        ],
+        name: 'validators',
+        outputs: [
+          [Object]
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function'
+      },
+      {
+        inputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'constructor'
+      },
+      {
+        anonymous: false,
+        inputs: [
+          [Object]
+        ],
+        name: 'Status',
+        type: 'event'
+      },
+      {
+        anonymous: false,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'nodeStatusChangeEvent',
+        type: 'event'
+      },
+      {
+        anonymous: false,
+        inputs: [
+          [Object],
+          [Object],
+          [Object]
+        ],
+        name: 'Transfer',
+        type: 'event'
+      },
+      {
+        anonymous: false,
+        inputs: [
+          [Object],
+          [Object],
+          [Object]
+        ],
+        name: 'Approval',
+        type: 'event'
+      },
+      {
+        anonymous: false,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'OwnershipTransferred',
+        type: 'event'
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: 'register',
+        outputs: [],
+        payable: true,
+        stateMutability: 'payable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: 'start',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: 'stop',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: 'unregister',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object]
+        ],
+        name: 'claimMiningRewards',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object]
+        ],
+        name: 'changeEntryStake',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object]
+        ],
+        name: 'addPotentialMalicious',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      },
+      {
+        constant: false,
+        inputs: [
+          [Object],
+          [Object]
+        ],
+        name: 'voteMalicious',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function'
+      }
+    ]
 
-  // reloadArticles: function() {
-  //   // refresh account information because the balance might have changed
-  //   App.displayAccountInfo();
-  //
-  //   // retrieve the article placeholder and clear it
-  //   $('#articlesRow').empty();
-  //
-  //   App.contracts.Picolo.deployed().then(function(instance) {
-  //     return instance.getArticle();
-  //   }).then(function(article) {
-  //     if (article[0] == 0x0) {
-  //       // no article
-  //       return;
-  //     }
-  //
-  //     // retrieve the article template and fill it
-  //     var articleTemplate = $('#articleTemplate');
-  //     articleTemplate.find('.panel-title').text(article[1]);
-  //     articleTemplate.find('.article-description').text(article[2]);
-  //     articleTemplate.find('.article-price').text(web3.fromWei(article[3], "ether"));
-  //
-  //     var seller = article[0];
-  //     if (seller == App.account) {
-  //       seller = "You";
-  //     }
-  //     articleTemplate.find('.article-seller').text(seller);
-  //
-  //     // add this article
-  //     $('#articlesRow').append(articleTemplate.html());
-  //   }).catch(function(err) {
-  //     console.error(err.message);
-  //   });
-  // },
+    App.contracts.Pic2 = web3.eth.contract(abiArray).at('0x28eb60edd659d1725540f853d919483657b4e39a');
+  },
 
   register: function() {
     // retrieve the detail of the article
@@ -96,6 +443,10 @@ App = {
       return false;
     }
 
+    App.contracts.Pic2.register({
+      from: App.account
+    });
+
     App.contracts.Picolo.deployed().then(function(instance) {
       console.log(instance);
       return instance.register();
@@ -104,21 +455,7 @@ App = {
     }).catch(function(err) {
       console.error(err);
     });
-  },
-
-  // listen to events triggered by the contract
-  // listenToEvents: function() {
-  //   App.contracts.Picolo.deployed().then(function(instance) {
-  //     instance.LogSellArticle({}, {}).watch(function(error, event) {
-  //       if (!error) {
-  //         $("#events").append('<li class="list-group-item">' + event.args._name + ' is now for sale</li>');
-  //       } else {
-  //         console.error(error);
-  //       }
-  //       App.reloadArticles();
-  //     })
-  //   });
-  // },
+  }
 };
 
 $(function() {

@@ -70,7 +70,7 @@ contract Picolo is Ownable, StandardToken {
    		require(keccak256(nodeStatus[payee]) != keccak256("malicious"));
    		require(keccak256(nodeStatus[payee]) != keccak256("pending"));
       require(payment != 0);
-      require(this.balance >= payment);
+      require(address(this).balance >= payment);
 
       uint256 payment = registeredNodesStake[payee];
       registeredNodesStake[payee] = 0;
